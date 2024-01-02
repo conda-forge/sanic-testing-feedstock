@@ -1,4 +1,4 @@
-{% set version = "23.6.0" %}
+{% set version = "23.12.0" %}
 
 package:
   name: sanic-testing
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/s/sanic-testing/sanic-testing-{{ version }}.tar.gz
-  sha256: 8617fe61f3657259a7d461c548a9c6eaa040bc2cfc3d5d0d5d064659f58c105b
+  sha256: 2b9c52b7314b7e1807958f41581e18b8254c5161c953e70fcf492e0dd2fe133f
 
 build:
   noarch: python
