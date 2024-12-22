@@ -5,21 +5,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/s/sanic-testing/sanic_testing-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/s/sanic-testing/sanic_testing-{{ version }}.tar.gz
   sha256: 7591ce537e2a651efb6dc01b458e7e4ea5347f6d91438676774c6f505a124731
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python {{ python_min }}
   run:
     - httpx >=0.18
-    - python >=3.8
+    - python >={{ python_min }}
 
 test:
   imports:
@@ -29,6 +29,7 @@ test:
   requires:
     - pip
     - sanic
+    - python {{ python_min }}
 
 about:
   home: https://github.com/sanic-org/sanic-testing/
