@@ -9,28 +9,30 @@ source:
   sha256: 7591ce537e2a651efb6dc01b458e7e4ea5347f6d91438676774c6f505a124731
 
 build:
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 1
+  noarch: python
+  script:
+    - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
 
 requirements:
   host:
     - pip
     - python {{ python_min }}
+    - setuptools
   run:
     - httpx >=0.18
     - python >={{ python_min }}
 
 test:
+  requires:
+    - pip
+    - python {{ python_min }}
+    - sanic
   imports:
     - sanic_testing
   commands:
     - pip check
-  requires:
-    - pip
-    - sanic
-    - python {{ python_min }}
-
+  
 about:
   home: https://github.com/sanic-org/sanic-testing/
   summary: Core testing clients for Sanic
